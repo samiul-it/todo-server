@@ -37,9 +37,16 @@ async function run() {
         const cursor = taskCollection.find(query);
         const tasks = await cursor.toArray();
         res.send(tasks);
-    })git init
-git add
+    })
 
+    // Deleting Task
+
+    app.delete("/deletetask/:id",async (req,res)=>{
+        const id = req.params.id;
+        const qurery = { _id: ObjectId(id) };
+        const result = await taskCollection.deleteOne(qurery);
+        res.send(result);
+    })
 
   } finally {
   }
