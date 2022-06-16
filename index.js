@@ -39,6 +39,12 @@ async function run() {
         res.send(tasks);
     })
 
+    app.get("/test",async (req,res)=>{
+        const tasks = ["Samiul"];
+        
+        res.send(tasks);
+    })
+
     // Deleting Task
 
     app.delete("/deletetask/:id",async (req,res)=>{
