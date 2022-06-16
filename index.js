@@ -72,6 +72,29 @@ async function run() {
       res.send(result);
     });
 
+    // Complete a Task
+
+
+    app.put("/completetask/:id", async (req, res) => {
+      const id = req.params.id;
+      const updateDescription = req.body;
+      const filter = { _id: ObjectId(id) };
+      const options = {
+        upsert: true,
+      };
+      const updateDoc = {
+        $set: {
+          isCompleted: updateDescription.taskStatusUpdate,
+        },
+      };
+      const result = await taskCollection.updateOne(filter, updateDoc, options);
+      res.send(result);
+    });
+
+
+
+
+
   } finally {
   }
 }
